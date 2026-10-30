@@ -8,11 +8,11 @@ The conjecture says that the sums
 
   `S_β(X; ℓ) = ∑_{N(c) ≤ X, c ≡ β (mod 4)} g̃(c) (c̄/|c|)^ℓ Λ(c)`
 
-of normalized quartic Gauss sums over primary primes of `ℤ[i]` are `b_β X^{3/4} + O(X^{1/2+ε})` with
-`b_β ≠ 0` when `ℓ = 0`, and `O(X^{1/2+ε})` when `ℓ ≠ 0`. By their identity (1.2),
-`g̃(c)² = -c/|c|` at the primary primes of degree one, so `g̃(c) (c̄/|c|) = -conj g̃(c)` and
-`S_β(X; 1) = -conj S_β(X; 0)` up to the primes of degree two. The cases `ℓ = 0` and `ℓ = 1` are
-therefore incompatible. This repository proves:
+of normalized quartic Gauss sums over primary `c ∈ ℤ[i]`, weighted by the von Mangoldt function, are `b_β X^{3/4} + O(X^{1/2+ε})` with
+`b_β ≠ 0` when `ℓ = 0`, and `O(X^{1/2+ε})` when `ℓ ≠ 0`. Their identity (1.2), whose symbol factors
+evaluate to 1 at primary primes, gives `g̃(c)² = -c/|c|`, so `g̃(c) (c̄/|c|) = -conj g̃(c)` and
+`S_β(X; 1) = -conj S_β(X; 0)` exactly. The cases `ℓ = 0` and `ℓ = 1` are therefore incompatible.
+The relation is already contained in DDHL (1.2) at `k = -1`. This repository proves:
 
 - **The pointwise pairing**: if `g = 0` or `g² = -κ c/|c|` with `|κ| = 1`, then
   `g (c̄/|c|) = -κ ḡ` (`pointwise_pairing`).
@@ -44,12 +44,13 @@ Mathlib has no quartic residue symbol and no primary primes of `ℤ[i]`, and the
 need them. The quartic Gauss sum `g̃` and the von Mangoldt function `Λ` of `ℤ[i]` are arbitrary
 functions `g : GaussianInt → ℂ` and `Λ : GaussianInt → ℝ`, and every result assumes of them only
 the identity `g(c)² = -κ c/|c|`, with `κ` a fixed unit, on the support of `Λ` or off an exceptional
-set of small weight. Cited, not formalized:
+set of small weight, so the Lean theorems are conditional. The unconditional statement, that
+Conjecture 1.2 is false for the quartic Gauss sum, rests on Lemma 2.2 of the companion paper, which is
+proved there and not formalized:
 
-- that the quartic Gauss sum satisfies the identity with `κ = 1` at the primary primes of degree one
-  (DDHL (1.2), with its symbol factors evaluated);
-- that `|g̃| ≤ 1` on the rest of the support of `Λ` (degree-two primes and prime powers), whose
-  weight is `O(X^{1/2} log X)`;
+- the quartic Gauss sum satisfies the identity with `κ = 1` at every primary prime (DDHL (1.2) at
+  `k = 2`, equivalently (3.11), with its symbol factors evaluated, and DDHL (3.8) at the primes of
+  degree two), and vanishes at higher prime powers (DDHL (3.7));
 - `conj (ν/c)₄ = (ν³/c)₄`, used to read `pairing_identities` as `A(ν³, -m) = -conj A(ν, m)`.
 
 The conjecture is stated along integer `X`; since the conjecture for real `X` implies it along the

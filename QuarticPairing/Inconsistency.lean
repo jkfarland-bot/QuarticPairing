@@ -12,8 +12,9 @@ public import QuarticPairing.Pairing
   fails for the class `β`.
 * `not_conjecture12_of_defect`: the same conclusion when the identity is assumed only off an
   exceptional set `E` whose weight `∑ |g̃(c)| |Λ(c)|` is `O(X^{1/2+ε})` for every `ε > 0`. For the
-  quartic Gauss sum, `E` can be taken to be the prime powers other than the primes of degree one:
-  there `|g̃| ≤ 1` and the weight is `O(X^{1/2} log X)`.
+  quartic Gauss sum the identity holds at every primary prime and `g̃ = 0` at higher prime powers, so
+  `not_conjecture12` applies directly; this version is for use when the identity is known only at
+  the primes of degree one.
 -/
 
 open Complex Filter Asymptotics Finset

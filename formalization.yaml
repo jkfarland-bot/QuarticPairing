@@ -37,7 +37,8 @@ sources:
     note: >-
       The companion paper of this formalization, by the same author. Lemma 3.1, Theorems 3.2,
       3.3, 4.1 and 4.2 and Propositions 3.4 and 5.1 are formalized; Lemma 2.2 (the identity (1.2)
-      of DDHL with its symbol factors evaluated, and the degree-two primes and prime powers),
+      of DDHL with its symbol factors evaluated, the degree-two primes and the prime powers, which
+      makes the conclusion unconditional),
       Remark 4.3 and the numerical check are not.
     license: "CC-BY-4.0"
     author_endorsement: "participated"
@@ -52,7 +53,7 @@ sources:
       formalized here; the theta-function sections (Suzuki's vanishing law, the sign collapse,
       the dictionary, the measurement and the repaired conjecture) are not. On novelty: the
       conjecture is unchanged in all five arXiv versions of DDHL, and the author found no
-      statement of the incompatibility in DDHL or in the papers citing it; DDHL's display (1.4)
+      statement of the incompatibility in DDHL or in the papers citing it; DDHL's identity (1.2)
       at k = -1 already contains the relation.
     license: "CC-BY-4.0"
     author_endorsement: "participated"
@@ -78,8 +79,8 @@ status:
     identities, the inconsistency of the conjecture under the identity (1.2) (exactly, and off an
     exceptional set of weight O(X^(1/2+eps))), and the conjugation identity behind the special
     role of order four. Not formalized: that the quartic Gauss sum satisfies (1.2) (DDHL (1.2)
-    with its symbol factors evaluated), the bound |g| <= 1 and the weight O(X^(1/2) log X) of the
-    rest of the support of the von Mangoldt function, the identity conj (nu/c)_4 = (nu^3/c)_4,
+    with its symbol factors evaluated), the identity at the degree-two primes and the vanishing at
+    higher prime powers, the identity conj (nu/c)_4 = (nu^3/c)_4,
     the statement about Grossencharaktere, and the remark on the generalization of David, Devin,
     Fazzari and Waxman.
   sorry_count: 0
