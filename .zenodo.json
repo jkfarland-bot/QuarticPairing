@@ -1,0 +1,20 @@
+{
+  "title": "QuarticPairing: a Lean 4 formalization of the pairing of the twists in Conjecture 1.2 of David, Dunn, Hamieh and Lin",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Farland, Joseph S.",
+      "orcid": "0009-0007-6809-804X"
+    }
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "Lean 4",
+    "Mathlib",
+    "quartic Gauss sums",
+    "Gaussian integers",
+    "Patterson conjecture",
+    "formal verification"
+  ],
+  "description": "Lean 4 / Mathlib formalization showing that Conjecture 1.2 of C. David, A. Dunn, A. Hamieh and H. Lin (arXiv:2306.11875) is inconsistent with their identity (1.2): if the normalized quartic Gauss sum satisfies g(c)^2 = -kappa c/|c| for a fixed unit kappa, then the twist by conj(c)/|c| is conjugation, S(X;1) = -kappa conj S(X;0), and the cases l = 0 and l = 1 of the conjecture force the constant b to vanish. Also the pairing identities for the twisted moments and the reason the collision is special to order four. The Gauss sum and the von Mangoldt function are abstract functions, so no quartic residue symbol is needed; the identity (1.2) itself is cited. No sorry, no native_decide; standard axioms only."
+}

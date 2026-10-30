@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "QuarticPairing: a Lean 4 formalization of the pairing of the twists in Conjecture 1.2 of David, Dunn, Hamieh and Lin"
+authors:
+  - family-names: Farland
+    given-names: Joseph S.
+    orcid: "https://orcid.org/0009-0007-6809-804X"
+version: v1.0
+date-released: 2026-10-30
+license: Apache-2.0
+repository-code: "https://github.com/jkfarland-bot/QuarticPairing"
+keywords:
+  - quartic Gauss sums
+  - Gaussian integers
+  - Patterson conjecture
+  - Lean 4
+  - Mathlib
+  - formal verification

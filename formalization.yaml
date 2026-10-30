@@ -1,0 +1,160 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "QuarticPairing: the pairing of the twists in Conjecture 1.2 of David, Dunn, Hamieh and Lin"
+  description: >-
+    Conjecture 1.2 of C. David, A. Dunn, A. Hamieh and H. Lin (arXiv:2306.11875) asserts that the
+    sums S_beta(X; l) of normalized quartic Gauss sums g(c) over primary primes c of Z[i] with
+    N(c) <= X and c = beta (mod 4), twisted by (conj(c)/|c|)^l and weighted by the von Mangoldt
+    function, are b_beta X^(3/4) + O(X^(1/2+eps)) with b_beta nonzero when l = 0 and
+    O(X^(1/2+eps)) when l is nonzero. The development proves that if g(c)^2 = -kappa c/|c| for a
+    fixed unit kappa on the support of the weight (the identity (1.2) of the same paper), then
+    g(c) conj(c)/|c| = -kappa conj(g(c)), so S_beta(X; 1) = -kappa conj(S_beta(X; 0)), and the
+    cases l = 0 and l = 1 of the conjecture force b_beta = 0, which the conjecture excludes; the
+    same holds when the identity fails on an exceptional set of weight O(X^(1/2+eps)). It also
+    proves the pairing identities A(nu^3, -m) = -kappa conj A(nu, m) for the twisted moments and
+    the fact behind the special role of order four: if |g| = 1 and g^k = xi then
+    conj(g) = g^(k-1) conj(xi). The Gauss sum and the von Mangoldt function are abstract functions
+    on the Gaussian integers, so no quartic residue symbol is defined.
+  authors:
+    - "Joseph S. Farland"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Joseph S. Farland"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11L05", "11R18", "11N13", "68V20"]
+
+sources:
+  - title: "The twists l = 0 and l = 1 in a conjecture on quartic Gauss sums, formalized in Lean"
+    authors:
+      - "Joseph S. Farland"
+    type: "article"
+    location: "Preprint, Zenodo, 2026"
+    relationship: "formalizes"
+    note: >-
+      The companion paper of this formalization, by the same author. Lemma 3.1, Theorems 3.2,
+      3.3, 4.1 and 4.2 and Propositions 3.4 and 5.1 are formalized; Lemma 2.2 (the identity (1.2)
+      of DDHL with its symbol factors evaluated, and the degree-two primes and prime powers),
+      Remark 4.3 and the numerical check are not.
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "A note on Conjecture 1.2 of David, Dunn, Hamieh and Lin: the pairing of the twists, Suzuki's vanishing law, and a repair"
+    authors:
+      - "Joseph S. Farland"
+    type: "article"
+    location: "Manuscript (Paper IX of the author's series), 2026"
+    relationship: "formalizes"
+    note: >-
+      Same author. Section 3 (the pairing identities, Corollary 3.5 and Proposition 3.6) is
+      formalized here; the theta-function sections (Suzuki's vanishing law, the sign collapse,
+      the dictionary, the measurement and the repaired conjecture) are not. On novelty: the
+      conjecture is unchanged in all five arXiv versions of DDHL, and the author found no
+      statement of the incompatibility in DDHL or in the papers citing it; DDHL's display (1.4)
+      at k = -1 already contains the relation.
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "Quartic Gauss sums over primes and metaplectic theta functions"
+    authors:
+      - "Chantal David"
+      - "Alexander Dunn"
+      - "Alia Hamieh"
+      - "Hua Lin"
+    type: "article"
+    location: "arXiv:2306.11875v5, 2026; to appear in Algebra & Number Theory"
+    relationship: "background"
+    note: "Conjecture 1.2 is the statement shown inconsistent; the identity (1.2) is the cited hypothesis."
+    license: "unknown"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    Formalized: the definitions of the sums of Conjecture 1.2 over the Gaussian integers of norm
+    at most X in a residue class modulo 4, of the conjecture itself along integer X, of the
+    weight of an exceptional set and of the twisted moments; the pointwise pairing, the pairing
+    of the twists (exactly, and up to twice the weight of an exceptional set), the pairing
+    identities, the inconsistency of the conjecture under the identity (1.2) (exactly, and off an
+    exceptional set of weight O(X^(1/2+eps))), and the conjugation identity behind the special
+    role of order four. Not formalized: that the quartic Gauss sum satisfies (1.2) (DDHL (1.2)
+    with its symbol factors evaluated), the bound |g| <= 1 and the weight O(X^(1/2) log X) of the
+    rest of the support of the von Mangoldt function, the identity conj (nu/c)_4 = (nu^3/c)_4,
+    the statement about Grossencharaktere, and the remark on the generalization of David, Devin,
+    Fazzari and Waxman.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude (Anthropic)"]
+      framework: "Claude.ai with code execution"
+      tool_setup: >-
+        AI-assisted: the Lean code was drafted and repaired by Claude against the manuscript's
+        statements and proofs and compiled locally with lake; the formulation with an abstract
+        Gauss sum, which avoids the quartic residue symbol, was proposed by Claude and adopted by
+        the author.
+      cost:
+        wall_time: "a few hours"
+        spend_usd: "subscription-based"
+        hardware: "API-only plus local machine"
+      prompting_notes: "The model was given the manuscript and asked to find a formulation that Mathlib supports and to formalize it without sorry or native_decide."
+  spend_usd: "subscription-based"
+  notes: >-
+    The author chose the scope: the inconsistency of Conjecture 1.2 and the pairing identities,
+    without the theta-function material of the manuscript.
+
+fidelity:
+  divergences: >-
+    The quartic Gauss sum and the von Mangoldt function are arbitrary functions g and Lambda on
+    the Gaussian integers, and the identity (1.2) is a hypothesis g(c)^2 = -kappa c/|c| with kappa
+    any fixed unit (kappa = 1 for the quartic Gauss sum). c/|c| is the image of c in C divided by
+    its absolute value, 0 at c = 0. The sums run over the Gaussian integers of norm at most X with
+    4 | c - beta, for an arbitrary Gaussian integer beta. The conjecture is stated along integer
+    X with Mathlib's IsBigO at atTop; the conjecture for real X implies it. The twisted moments
+    are sums over an arbitrary finite set, with the residue symbols replaced by functions chi,
+    chi_3 satisfying conj(chi_3) = chi on the support of the weight.
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "Joseph S. Farland"
+  notes: >-
+    The definitions in Challenge.lean are copied verbatim from the development and compared by
+    Comparator. No external referee has reviewed the paper or the formalization.
+
+alignment:
+  namespace: "QuarticPairing"
+  statements:
+    - source: "Lemma 3.1, the pointwise pairing"
+      lean: "QuarticPairing.pointwise_pairing"
+      module: "Challenge"
+      status: "proved"
+    - source: "Theorem 3.2, the pairing of the twists"
+      lean: "QuarticPairing.pairing_of_twists"
+      module: "Challenge"
+      status: "proved"
+    - source: "Theorem 3.3, the pairing with an exceptional set"
+      lean: "QuarticPairing.pairing_of_twists_defect"
+      module: "Challenge"
+      status: "proved"
+    - source: "Proposition 3.4, the pairing identities (manuscript Proposition 3.4, first identity)"
+      lean: "QuarticPairing.pairing_identities"
+      module: "Challenge"
+      status: "proved"
+    - source: "Theorem 4.1, the inconsistency of Conjecture 1.2 (manuscript Corollary 3.5)"
+      lean: "QuarticPairing.conjecture12_inconsistent"
+      module: "Challenge"
+      status: "proved"
+    - source: "Theorem 4.2, the inconsistency with an exceptional set"
+      lean: "QuarticPairing.conjecture12_inconsistent_of_defect"
+      module: "Challenge"
+      status: "proved"
+    - source: "Proposition 5.1, why order four (manuscript Proposition 3.6)"
+      lean: "QuarticPairing.why_quartic"
+      module: "Challenge"
+      status: "proved"
+
+acknowledgements: "Lean 4 and Mathlib; Claude (Anthropic) for formalization assistance; the Palomar starter template for the check scripts."

@@ -1,0 +1,27 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "QuarticPairing.pointwise_pairing",
+    "QuarticPairing.pairing_of_twists",
+    "QuarticPairing.pairing_of_twists_defect",
+    "QuarticPairing.pairing_identities",
+    "QuarticPairing.why_quartic",
+    "QuarticPairing.conjecture12_inconsistent",
+    "QuarticPairing.conjecture12_inconsistent_of_defect"
+  ],
+  "definition_names": [
+    "QuarticPairing.unitDir",
+    "QuarticPairing.normBall",
+    "QuarticPairing.twistedSum",
+    "QuarticPairing.Conjecture12",
+    "QuarticPairing.defectSum",
+    "QuarticPairing.twistedAvg"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
