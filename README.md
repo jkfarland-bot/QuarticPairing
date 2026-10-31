@@ -4,6 +4,12 @@ Lean 4 / Mathlib formalization of the pairing of the twists `ℓ = 0` and `ℓ =
 C. David, A. Dunn, A. Hamieh and H. Lin, *Quartic Gauss sums over primes and metaplectic theta
 functions* (arXiv:2306.11875, to appear in Algebra & Number Theory).
 
+Companion paper: J. S. Farland, *The twists ℓ = 0 and ℓ = 1 in a conjecture on quartic Gauss sums,
+formalized in Lean* (preprint, Zenodo, all versions
+[doi:10.5281/zenodo.23848955](https://doi.org/10.5281/zenodo.23848955)).
+
+Archived on Zenodo: [doi:10.5281/zenodo.23825569](https://doi.org/10.5281/zenodo.23825569) (all versions).
+
 The conjecture says that the sums
 
   `S_β(X; ℓ) = ∑_{N(c) ≤ X, c ≡ β (mod 4)} g̃(c) (c̄/|c|)^ℓ Λ(c)`
@@ -69,7 +75,8 @@ identity, the pairing and `S_β(X; 1) = -conj S_β(X; 0)` to `10⁻¹³`.
 ## Sources
 
 - The companion paper: J. S. Farland, *The twists ℓ = 0 and ℓ = 1 in a conjecture on quartic Gauss
-  sums, formalized in Lean* (preprint, Zenodo, 2026).
+  sums, formalized in Lean* (preprint, Zenodo, 2026),
+  [doi:10.5281/zenodo.23848955](https://doi.org/10.5281/zenodo.23848955).
 - The manuscript: J. S. Farland, *A note on Conjecture 1.2 of David, Dunn, Hamieh and Lin: the
   pairing of the twists, Suzuki's vanishing law, and a repair* (Paper IX of the author's series),
   whose Section 3 is formalized here.

@@ -16,5 +16,14 @@
     "Patterson conjecture",
     "formal verification"
   ],
-  "description": "Lean 4 / Mathlib formalization showing that Conjecture 1.2 of C. David, A. Dunn, A. Hamieh and H. Lin (arXiv:2306.11875) is inconsistent with their identity (1.2): if the normalized quartic Gauss sum satisfies g(c)^2 = -kappa c/|c| for a fixed unit kappa, then the twist by conj(c)/|c| is conjugation, S(X;1) = -kappa conj S(X;0), and the cases l = 0 and l = 1 of the conjecture force the constant b to vanish. Also the pairing identities for the twisted moments and the reason the collision is special to order four. The Gauss sum and the von Mangoldt function are abstract functions, so no quartic residue symbol is needed; the identity (1.2) itself is cited. No sorry, no native_decide; standard axioms only."
+  "description": "Lean 4 / Mathlib formalization showing that Conjecture 1.2 of C. David, A. Dunn, A. Hamieh and H. Lin (arXiv:2306.11875) is inconsistent with their identity (1.2): if the normalized quartic Gauss sum satisfies g(c)^2 = -kappa c/|c| for a fixed unit kappa, then the twist by conj(c)/|c| is conjugation, S(X;1) = -kappa conj S(X;0), and the cases l = 0 and l = 1 of the conjecture force the constant b to vanish. Also the pairing identities for the twisted moments and the reason the collision is special to order four. The Gauss sum and the von Mangoldt function are abstract functions, so no quartic residue symbol is needed; the identity (1.2) itself is cited. No sorry, no native_decide; standard axioms only. Version 1.1 adds the corrected form of Conjecture 1.2, with main term -conj(b_beta) X^(3/4) at l = 1: it proves S(X; 1 - l) = -kappa conj S(X; l) for every l, that the corrected conjecture is equivalent under the identity (1.2) to its cases l <= 0, and that its main term at l = 1 is the only one compatible with the case l = 0.",
+  "version": "v1.1",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.23848955",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    }
+  ]
 }

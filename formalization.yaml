@@ -35,7 +35,7 @@ sources:
     authors:
       - "Joseph S. Farland"
     type: "article"
-    location: "Preprint, Zenodo, 2026"
+    location: "Preprint, Zenodo, 2026, doi:10.5281/zenodo.23848955 (all versions)"
     relationship: "formalizes"
     note: >-
       The companion paper of this formalization, by the same author. Lemma 3.1, Theorems 3.2,
