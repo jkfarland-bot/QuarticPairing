@@ -8,7 +8,10 @@
     "QuarticPairing.pairing_identities",
     "QuarticPairing.why_quartic",
     "QuarticPairing.conjecture12_inconsistent",
-    "QuarticPairing.conjecture12_inconsistent_of_defect"
+    "QuarticPairing.conjecture12_inconsistent_of_defect",
+    "QuarticPairing.reflection_of_twists",
+    "QuarticPairing.amended_conjecture_consistent",
+    "QuarticPairing.main_term_one_forced"
   ],
   "definition_names": [
     "QuarticPairing.unitDir",
@@ -16,7 +19,9 @@
     "QuarticPairing.twistedSum",
     "QuarticPairing.Conjecture12",
     "QuarticPairing.defectSum",
-    "QuarticPairing.twistedAvg"
+    "QuarticPairing.twistedAvg",
+    "QuarticPairing.amendedMain",
+    "QuarticPairing.Conjecture12Amended"
   ],
   "permitted_axioms": [
     "propext",

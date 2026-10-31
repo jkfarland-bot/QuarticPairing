@@ -12,7 +12,9 @@ of normalized quartic Gauss sums over primary `c ∈ ℤ[i]`, weighted by the vo
 `b_β ≠ 0` when `ℓ = 0`, and `O(X^{1/2+ε})` when `ℓ ≠ 0`. Their identity (1.2), whose symbol factors
 evaluate to 1 at primary primes, gives `g̃(c)² = -c/|c|`, so `g̃(c) (c̄/|c|) = -conj g̃(c)` and
 `S_β(X; 1) = -conj S_β(X; 0)` exactly. The cases `ℓ = 0` and `ℓ = 1` are therefore incompatible.
-The relation is already contained in DDHL (1.2) at `k = -1`. This repository proves:
+The relation is already contained in DDHL (1.2) at `k = -1`. The corrected conjecture gives `ℓ = 1`
+the main term `-conj(b_β) X^{3/4}`; it is forced by the case `ℓ = 0` and consistent with the identity.
+This repository proves:
 
 - **The pointwise pairing**: if `g = 0` or `g² = -κ c/|c|` with `|κ| = 1`, then
   `g (c̄/|c|) = -κ ḡ` (`pointwise_pairing`).
@@ -20,11 +22,17 @@ The relation is already contained in DDHL (1.2) at `k = -1`. This repository pro
   support of `Λ` (`pairing_of_twists`), and in general
   `|S_β(X; 1) + κ conj S_β(X; 0)| ≤ 2 ∑_{c ∈ E} |g(c)| |Λ(c)|` off an exceptional set `E`
   (`pairing_of_twists_defect`).
+- **The reflection of the twists**: `S_β(X; 1 - ℓ) = -κ conj S_β(X; ℓ)` for every `ℓ`
+  (`reflection_of_twists`).
 - **The pairing identities** for the twisted moments: `A(ν³, -m) = -κ conj A(ν, m)`
   (`pairing_identities`).
 - **The inconsistency**: under the identity on the support of `Λ`, or off a set of weight
   `O(X^{1/2+ε})`, Conjecture 1.2 fails for every class `β` (`conjecture12_inconsistent`,
   `conjecture12_inconsistent_of_defect`).
+- **The corrected conjecture**: with main term `-κ conj(b_β) X^{3/4}` at `ℓ = 1`
+  (`Conjecture12Amended`), it is equivalent under the identity to its cases `ℓ ≤ 0`
+  (`amended_conjecture_consistent`), and main terms `b X^{3/4}` at `ℓ = 0` and `b' X^{3/4}` at
+  `ℓ = 1` force `b' = -κ conj b` (`main_term_one_forced`).
 - **Why quartic**: if `|g| = 1` and `g^k = ξ`, then `ḡ = g^{k-1} ξ̄` (`why_quartic`); conjugation
   returns to the first moment only when `k = 2`, the quartic case.
 
@@ -75,7 +83,7 @@ by the author. The code is released under the Apache License 2.0 (`LICENSE`); th
 ## Layout for the Palomar registry
 
 - `Challenge.lean` is the statement surface to audit. It restates the definitions exactly as the
-  development has them and states the seven results with `sorry`.
+  development has them and states the ten results with `sorry`.
 - `Solution.lean` proves the same declarations from the development in `QuarticPairing/`.
 - `comparator.json` lists the compared theorems and definitions and the permitted axioms.
 - `formalization.yaml` records authorship, sources, AI assistance, scope and fidelity.
@@ -92,13 +100,17 @@ ruby scripts/validate-formalization.rb
 | Lemma 3.1 | `pointwise_pairing` |
 | Theorem 3.2 | `pairing_of_twists` |
 | Theorem 3.3 | `pairing_of_twists_defect` |
-| Proposition 3.4 | `pairing_identities` |
+| Theorem 3.4 | `reflection_of_twists` |
+| Proposition 3.5 | `pairing_identities` |
 | **Theorem 4.1** | `conjecture12_inconsistent` |
 | **Theorem 4.2** | `conjecture12_inconsistent_of_defect` |
-| Proposition 5.1 | `why_quartic` |
+| Theorem 5.2 | `amended_conjecture_consistent` |
+| Theorem 5.3 | `main_term_one_forced` |
+| Proposition 6.1 | `why_quartic` |
 
 | File | Contents |
 |---|---|
-| `Defs` | `unitDir`, `normBall`, `twistedSum`, `Conjecture12`, `defectSum`, `twistedAvg` |
-| `Pairing` | the pointwise pairing, the pairing of the twists, the pairing identities, why quartic |
+| `Defs` | `unitDir`, `normBall`, `twistedSum`, `Conjecture12`, `amendedMain`, `Conjecture12Amended`, `defectSum`, `twistedAvg` |
+| `Pairing` | the pointwise pairing, the pairing and reflection of the twists, the pairing identities, why quartic |
 | `Inconsistency` | the two inconsistency theorems |
+| `Amended` | the corrected conjecture: consistency and the forced main term |

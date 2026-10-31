@@ -12,6 +12,7 @@ the twist by `c̄/|c|` into conjugation:
 
 * `term_pairing`: `g̃(c) (c̄/|c|) = -κ conj g̃(c)`;
 * `twistedSum_one`: `S_β(X; 1) = -κ conj S_β(X; 0)` when the identity holds on the support of `Λ`;
+* `twistedSum_reflect`: more generally `S_β(X; 1 - ℓ) = -κ conj S_β(X; ℓ)` for every `ℓ`;
 * `twistedSum_one_sub`: in general `S_β(X; 1) + κ conj S_β(X; 0)` is at most twice the weight of
   the exceptional set where the identity is not assumed;
 * `twistedAvg_pairing`: the moments `A(ν, m)`, `m` odd, satisfy `A(ν³, -m) = -κ conj A(ν, m)`
@@ -120,6 +121,45 @@ theorem twistedSum_one_sub (g : GaussianInt → ℂ) (Λ : GaussianInt → ℝ) 
 lemma unitDir_ne_zero_of {g κ : ℂ} {c : GaussianInt} (hg : g ≠ 0) (h : g ^ 2 = -κ * unitDir c) :
     unitDir c ≠ 0 := by
   intro h0; simp [h0] at h; exact hg h
+
+/-- The summand identity behind `twistedSum_reflect`. -/
+lemma term_reflect (g κ : ℂ) (hκ : ‖κ‖ = 1) (c : GaussianInt) (Λ : ℝ)
+    (h : Λ ≠ 0 → g = 0 ∨ g ^ 2 = -κ * unitDir c) (ℓ : ℤ) :
+    g * starRingEnd ℂ (unitDir c) ^ (1 - ℓ) * (Λ : ℂ) =
+      -κ * starRingEnd ℂ (g * starRingEnd ℂ (unitDir c) ^ ℓ * (Λ : ℂ)) := by
+  by_cases hΛ : Λ = 0
+  · simp [hΛ]
+  rcases h hΛ with hg | hg
+  · simp [hg]
+  by_cases hg0 : g = 0
+  · simp [hg0]
+  have hθ0 := unitDir_ne_zero_of hg0 hg
+  have hc0 : c ≠ 0 := by rintro rfl; exact hθ0 unitDir_zero
+  have hθ := norm_unitDir hc0
+  have hpair := mul_conj_eq_neg_conj hθ hκ (Or.inr hg)
+  have hκκ := mul_conj_self_eq_one hκ
+  have hθθ := mul_conj_self_eq_one hθ
+  have hφ0 : starRingEnd ℂ (unitDir c) ≠ 0 := (map_ne_zero _).2 hθ0
+  have hθinv : unitDir c = (starRingEnd ℂ (unitDir c))⁻¹ := eq_inv_of_mul_eq_one_left hθθ
+  have hθl : unitDir c ^ ℓ = (starRingEnd ℂ (unitDir c) ^ ℓ)⁻¹ := by
+    conv_lhs => rw [hθinv]
+    exact inv_zpow _ _
+  have hcg : starRingEnd ℂ g = -starRingEnd ℂ κ * g * starRingEnd ℂ (unitDir c) := by
+    linear_combination (starRingEnd ℂ κ) * hpair - starRingEnd ℂ g * hκκ
+  simp only [map_mul, map_zpow₀, Complex.conj_conj, Complex.conj_ofReal]
+  rw [hcg, hθl, zpow_sub₀ hφ0, zpow_one, div_eq_mul_inv]
+  linear_combination (-(g * starRingEnd ℂ (unitDir c) * (starRingEnd ℂ (unitDir c) ^ ℓ)⁻¹ *
+    (Λ : ℂ))) * hκκ
+
+open Classical in
+/-- **The reflection of the twists.** If `g̃(c)² = -κ c/|c|` (or `g̃(c) = 0`) on the support of
+`Λ`, then `S_β(X; 1 - ℓ) = -κ conj S_β(X; ℓ)` for every `X` and every `ℓ ∈ ℤ`. -/
+theorem twistedSum_reflect (g : GaussianInt → ℂ) (Λ : GaussianInt → ℝ) (β : GaussianInt) {κ : ℂ}
+    (hκ : ‖κ‖ = 1) (h12 : ∀ c, Λ c ≠ 0 → g c = 0 ∨ g c ^ 2 = -κ * unitDir c) (X : ℕ) (ℓ : ℤ) :
+    twistedSum g Λ β X (1 - ℓ) = -κ * starRingEnd ℂ (twistedSum g Λ β X ℓ) := by
+  unfold twistedSum
+  rw [map_sum, mul_sum]
+  exact sum_congr rfl fun c _ => term_reflect (g c) κ hκ c (Λ c) (h12 c) ℓ
 
 /-- **The pairing identities** (first form). Let `k ∈ ℤ` (so that `m = 2k + 1` is odd). If on the
 support of `w` the identity `g(c)² = -κ c/|c|` holds and `conj χ₃(c) = χ(c)`, as for

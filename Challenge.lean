@@ -22,7 +22,10 @@ satisfies it is the theorem (1.2) of their paper and is not formalized.
   is conjugation, so `S_β(X; 1) = -κ conj S_β(X; 0)`.
 * `pairing_identities`: `A(ν³, -m) = -κ conj A(ν, m)` for the twisted moments.
 * `why_quartic`: if `|g| = 1` and `g^k = ξ`, then `ḡ = g^{k-1} ξ̄`.
+* `reflection_of_twists`: `S_β(X; 1 - ℓ) = -κ conj S_β(X; ℓ)` for every `ℓ`.
 * `conjecture12_inconsistent`, `conjecture12_inconsistent_of_defect`: Conjecture 1.2 fails.
+* `amended_conjecture_consistent`, `main_term_one_forced`: the amended conjecture, with main term
+  `-κ conj(b) X^{3/4}` at `ℓ = 1`, is consistent with the identity, and that main term is forced.
 -/
 
 open Complex Finset Asymptotics
@@ -68,6 +71,22 @@ def defectSum (g : GaussianInt → ℂ) (Λ : GaussianInt → ℝ) (β : Gaussia
 def twistedAvg (χ g : GaussianInt → ℂ) (w : GaussianInt → ℝ) (s : Finset GaussianInt) (k : ℤ) :
     ℂ :=
   ∑ c ∈ s, starRingEnd ℂ (χ c) * g c * unitDir c ^ k * (w c : ℂ)
+
+/-- The main term of the amended conjecture: `b X^{3/4}` at `ℓ = 0`, `-κ conj(b) X^{3/4}` at
+`ℓ = 1`, and `0` for the other `ℓ`. -/
+def amendedMain (κ b : ℂ) (X : ℕ) (ℓ : ℤ) : ℂ :=
+  if ℓ = 0 then b * ((((X : ℝ) ^ ((3 : ℝ) / 4) : ℝ)) : ℂ)
+  else if ℓ = 1 then -κ * starRingEnd ℂ b * ((((X : ℝ) ^ ((3 : ℝ) / 4) : ℝ)) : ℂ) else 0
+
+/-- **The amended conjecture**, for the class `β` and along integer `X`: there is `b ≠ 0` such
+that for every `ε > 0` and every `ℓ ∈ ℤ`, `S_β(X; ℓ) = b X^{3/4} + O(X^{1/2+ε})` if `ℓ = 0`,
+`S_β(X; ℓ) = -κ conj(b) X^{3/4} + O(X^{1/2+ε})` if `ℓ = 1`, and `S_β(X; ℓ) = O(X^{1/2+ε})`
+otherwise. For the quartic Gauss sum `κ = 1`. -/
+def Conjecture12Amended (g : GaussianInt → ℂ) (Λ : GaussianInt → ℝ) (β : GaussianInt) (κ : ℂ) :
+    Prop :=
+  ∃ b : ℂ, b ≠ 0 ∧ ∀ ε : ℝ, 0 < ε → ∀ ℓ : ℤ,
+    (fun X : ℕ => twistedSum g Λ β X ℓ - amendedMain κ b X ℓ)
+      =O[Filter.atTop] (fun X : ℕ => (X : ℝ) ^ ((1 : ℝ) / 2 + ε))
 
 
 /-- **The pointwise pairing.** If `g̃(c) = 0` or `g̃(c)² = -κ c/|c|` with `|κ| = 1`, then
@@ -123,6 +142,39 @@ theorem conjecture12_inconsistent_of_defect (g : GaussianInt → ℂ) (Λ : Gaus
     (hE : ∀ ε : ℝ, 0 < ε →
       (fun X : ℕ => defectSum g Λ β E X) =O[Filter.atTop] (fun X : ℕ => (X : ℝ) ^ ((1 : ℝ) / 2 + ε))) :
     ¬ Conjecture12 g Λ β := by
+  sorry
+
+/-- **The reflection of the twists.** If `g̃(c)² = -κ c/|c|` (or `g̃(c) = 0`) on the support of
+`Λ`, then `S_β(X; 1 - ℓ) = -κ conj S_β(X; ℓ)` for every `X` and every `ℓ ∈ ℤ`. -/
+theorem reflection_of_twists (g : GaussianInt → ℂ) (Λ : GaussianInt → ℝ) (β : GaussianInt)
+    {κ : ℂ} (hκ : ‖κ‖ = 1) (h12 : ∀ c, Λ c ≠ 0 → g c = 0 ∨ g c ^ 2 = -κ * unitDir c) (X : ℕ)
+    (ℓ : ℤ) :
+    twistedSum g Λ β X (1 - ℓ) = -κ * starRingEnd ℂ (twistedSum g Λ β X ℓ) := by
+  sorry
+
+/-- **The amended conjecture is consistent with the identity.** If `g̃(c)² = -κ c/|c|` (or
+`g̃(c) = 0`) on the support of `Λ`, the amended conjecture is equivalent to its cases `ℓ ≤ 0`. -/
+theorem amended_conjecture_consistent (g : GaussianInt → ℂ) (Λ : GaussianInt → ℝ)
+    (β : GaussianInt) {κ : ℂ} (hκ : ‖κ‖ = 1)
+    (h12 : ∀ c, Λ c ≠ 0 → g c = 0 ∨ g c ^ 2 = -κ * unitDir c) :
+    Conjecture12Amended g Λ β κ ↔
+      ∃ b : ℂ, b ≠ 0 ∧ ∀ ε : ℝ, 0 < ε → ∀ ℓ : ℤ, ℓ ≤ 0 →
+        (fun X : ℕ => twistedSum g Λ β X ℓ - amendedMain κ b X ℓ)
+          =O[Filter.atTop] (fun X : ℕ => (X : ℝ) ^ ((1 : ℝ) / 2 + ε)) := by
+  sorry
+
+/-- **The main term at `ℓ = 1` is forced.** Under the identity, main terms `b X^{3/4}` at `ℓ = 0`
+and `b' X^{3/4}` at `ℓ = 1`, with errors `O(X^{1/2+ε})` for every `ε > 0`, force
+`b' = -κ conj b`. -/
+theorem main_term_one_forced (g : GaussianInt → ℂ) (Λ : GaussianInt → ℝ) (β : GaussianInt)
+    {κ : ℂ} (hκ : ‖κ‖ = 1) (h12 : ∀ c, Λ c ≠ 0 → g c = 0 ∨ g c ^ 2 = -κ * unitDir c) (b b' : ℂ)
+    (h0 : ∀ ε : ℝ, 0 < ε → (fun X : ℕ => twistedSum g Λ β X 0 -
+      b * ((((X : ℝ) ^ ((3 : ℝ) / 4) : ℝ)) : ℂ)) =O[Filter.atTop]
+        (fun X : ℕ => (X : ℝ) ^ ((1 : ℝ) / 2 + ε)))
+    (h1 : ∀ ε : ℝ, 0 < ε → (fun X : ℕ => twistedSum g Λ β X 1 -
+      b' * ((((X : ℝ) ^ ((3 : ℝ) / 4) : ℝ)) : ℂ)) =O[Filter.atTop]
+        (fun X : ℕ => (X : ℝ) ^ ((1 : ℝ) / 2 + ε))) :
+    b' = -κ * starRingEnd ℂ b := by
   sorry
 
 end QuarticPairing

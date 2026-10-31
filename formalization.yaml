@@ -12,8 +12,11 @@ project:
     fixed unit kappa on the support of the weight (the identity (1.2) of the same paper), then
     g(c) conj(c)/|c| = -kappa conj(g(c)), so S_beta(X; 1) = -kappa conj(S_beta(X; 0)), and the
     cases l = 0 and l = 1 of the conjecture force b_beta = 0, which the conjecture excludes; the
-    same holds when the identity fails on an exceptional set of weight O(X^(1/2+eps)). It also
-    proves the pairing identities A(nu^3, -m) = -kappa conj A(nu, m) for the twisted moments and
+    same holds when the identity fails on an exceptional set of weight O(X^(1/2+eps)). More
+    generally S_beta(X; 1 - l) = -kappa conj(S_beta(X; l)) for every l. The corrected conjecture,
+    with main term -kappa conj(b_beta) X^(3/4) at l = 1, is shown equivalent under the identity to
+    its cases l <= 0, and that main term is shown to be the only one compatible with the case
+    l = 0. It also proves the pairing identities A(nu^3, -m) = -kappa conj A(nu, m) for the twisted moments and
     the fact behind the special role of order four: if |g| = 1 and g^k = xi then
     conj(g) = g^(k-1) conj(xi). The Gauss sum and the von Mangoldt function are abstract functions
     on the Gaussian integers, so no quartic residue symbol is defined.
@@ -36,10 +39,10 @@ sources:
     relationship: "formalizes"
     note: >-
       The companion paper of this formalization, by the same author. Lemma 3.1, Theorems 3.2,
-      3.3, 4.1 and 4.2 and Propositions 3.4 and 5.1 are formalized; Lemma 2.2 (the identity (1.2)
+      3.3, 3.4, 4.1, 4.2, 5.2 and 5.3 and Propositions 3.5 and 6.1 are formalized; Lemma 2.2 (the identity (1.2)
       of DDHL with its symbol factors evaluated, the degree-two primes and the prime powers, which
       makes the conclusion unconditional),
-      Remark 4.3 and the numerical check are not.
+      Remark 5.4 and the numerical check are not.
     license: "CC-BY-4.0"
     author_endorsement: "participated"
   - title: "A note on Conjecture 1.2 of David, Dunn, Hamieh and Lin: the pairing of the twists, Suzuki's vanishing law, and a repair"
@@ -73,10 +76,11 @@ sources:
 status:
   scope: >-
     Formalized: the definitions of the sums of Conjecture 1.2 over the Gaussian integers of norm
-    at most X in a residue class modulo 4, of the conjecture itself along integer X, of the
+    at most X in a residue class modulo 4, of the conjecture itself and of its corrected form along integer X, of the
     weight of an exceptional set and of the twisted moments; the pointwise pairing, the pairing
     of the twists (exactly, and up to twice the weight of an exceptional set), the pairing
-    identities, the inconsistency of the conjecture under the identity (1.2) (exactly, and off an
+    identities, the reflection S(1 - l) = -kappa conj S(l), the consistency of the corrected
+    conjecture and the forced main term at l = 1, the inconsistency of the conjecture under the identity (1.2) (exactly, and off an
     exceptional set of weight O(X^(1/2+eps))), and the conjugation identity behind the special
     role of order four. Not formalized: that the quartic Gauss sum satisfies (1.2) (DDHL (1.2)
     with its symbol factors evaluated), the identity at the degree-two primes and the vanishing at
@@ -104,7 +108,7 @@ automation:
       prompting_notes: "The model was given the manuscript and asked to find a formulation that Mathlib supports and to formalize it without sorry or native_decide."
   spend_usd: "subscription-based"
   notes: >-
-    The author chose the scope: the inconsistency of Conjecture 1.2 and the pairing identities,
+    The author chose the scope: the inconsistency of Conjecture 1.2, its corrected form, and the pairing identities,
     without the theta-function material of the manuscript.
 
 fidelity:
@@ -141,7 +145,11 @@ alignment:
       lean: "QuarticPairing.pairing_of_twists_defect"
       module: "Challenge"
       status: "proved"
-    - source: "Proposition 3.4, the pairing identities (manuscript Proposition 3.4, first identity)"
+    - source: "Theorem 3.4, the reflection of the twists"
+      lean: "QuarticPairing.reflection_of_twists"
+      module: "Challenge"
+      status: "proved"
+    - source: "Proposition 3.5, the pairing identities (manuscript Proposition 3.4, first identity)"
       lean: "QuarticPairing.pairing_identities"
       module: "Challenge"
       status: "proved"
@@ -153,7 +161,15 @@ alignment:
       lean: "QuarticPairing.conjecture12_inconsistent_of_defect"
       module: "Challenge"
       status: "proved"
-    - source: "Proposition 5.1, why order four (manuscript Proposition 3.6)"
+    - source: "Theorem 5.2, consistency of the corrected conjecture"
+      lean: "QuarticPairing.amended_conjecture_consistent"
+      module: "Challenge"
+      status: "proved"
+    - source: "Theorem 5.3, the main term at l = 1 is forced"
+      lean: "QuarticPairing.main_term_one_forced"
+      module: "Challenge"
+      status: "proved"
+    - source: "Proposition 6.1, why order four (manuscript Proposition 3.6)"
       lean: "QuarticPairing.why_quartic"
       module: "Challenge"
       status: "proved"
