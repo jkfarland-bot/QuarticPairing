@@ -2,7 +2,7 @@ module
 
 public import Mathlib
 
-public section
+@[expose] public section
 
 /-!
 # The pairing of the twists in Conjecture 1.2 of David, Dunn, Hamieh and Lin: statements
