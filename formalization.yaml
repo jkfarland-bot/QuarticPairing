@@ -128,7 +128,8 @@ review:
     - "Joseph S. Farland"
   notes: >-
     The definitions in Challenge.lean are copied verbatim from the development and compared by
-    Comparator. No external referee has reviewed the paper or the formalization.
+    Comparator, bodies included: comparator.json lists no definition holes (earlier
+    releases listed the definitions as holes, so only their names and types were compared). No external referee has reviewed the paper or the formalization.
 
 alignment:
   namespace: "QuarticPairing"
