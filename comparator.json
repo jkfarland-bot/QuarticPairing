@@ -13,16 +13,7 @@
     "QuarticPairing.amended_conjecture_consistent",
     "QuarticPairing.main_term_one_forced"
   ],
-  "definition_names": [
-    "QuarticPairing.unitDir",
-    "QuarticPairing.normBall",
-    "QuarticPairing.twistedSum",
-    "QuarticPairing.Conjecture12",
-    "QuarticPairing.defectSum",
-    "QuarticPairing.twistedAvg",
-    "QuarticPairing.amendedMain",
-    "QuarticPairing.Conjecture12Amended"
-  ],
+  "definition_names": [],
   "permitted_axioms": [
     "propext",
     "Quot.sound",
